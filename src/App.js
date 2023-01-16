@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import FeedbackList from "./components/FeedbackList";
 import FeedbackStats from "./components/FeedbackStats";
 import FeedbackForm from "./components/FeedbackForm";
+import AboutIconLink from "./components/AboutIconLink";
 import FeedbackData from "./data/FeedbackData";
 import AboutPage from "../src/pages/AboutPage";
 
@@ -37,6 +38,7 @@ function App() {
 									feedbacks={feedbacks}
 									handleDelete={deleteFeedback}
 								/>
+								<AboutIconLink />
 							</>
 						}
 					></Route>
