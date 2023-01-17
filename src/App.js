@@ -8,6 +8,7 @@ import FeedbackForm from "./components/FeedbackForm";
 import AboutIconLink from "./components/AboutIconLink";
 import FeedbackData from "./data/FeedbackData";
 import AboutPage from "../src/pages/AboutPage";
+import { FeedbackProvider } from "../src/context/FeedbackContext";
 
 function App() {
 	const [feedbacks, setFeedbacks] = useState(FeedbackData);
@@ -23,29 +24,31 @@ function App() {
 		}
 	};
 	return (
-		<Router>
-			<Header />
-			<div className="container">
-				<Routes>
-					<Route
-						exact
-						path="/"
-						element={
-							<>
-								<FeedbackForm handleAdd={addFeedback} />
-								<FeedbackStats feedbacks={feedbacks} />
-								<FeedbackList
-									feedbacks={feedbacks}
-									handleDelete={deleteFeedback}
-								/>
-								<AboutIconLink />
-							</>
-						}
-					></Route>
-					<Route path="/about" element={<AboutPage />} />
-				</Routes>
-			</div>
-		</Router>
+		<FeedbackProvider>
+			<Router>
+				<Header />
+				<div className="container">
+					<Routes>
+						<Route
+							exact
+							path="/"
+							element={
+								<>
+									<FeedbackForm handleAdd={addFeedback} />
+									<FeedbackStats feedbacks={feedbacks} />
+									<FeedbackList
+										feedbacks={feedbacks}
+										handleDelete={deleteFeedback}
+									/>
+									<AboutIconLink />
+								</>
+							}
+						></Route>
+						<Route path="/about" element={<AboutPage />} />
+					</Routes>
+				</div>
+			</Router>
+		</FeedbackProvider>
 	);
 }
 
