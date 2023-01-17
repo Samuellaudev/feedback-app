@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 const FeedbackContext = createContext();
 
 export const FeedbackProvider = ({ children }) => {
-	const [feedback, setFeedback] = useState([
+	const [feedbacks, setFeedbacks] = useState([
 		{
 			id: 1,
 			text: "This item is from context",
@@ -13,7 +13,7 @@ export const FeedbackProvider = ({ children }) => {
 	return (
 		<FeedbackContext.Provider
 			value={{
-				feedback,
+				feedbacks,
 			}}
 		>
 			{children}
