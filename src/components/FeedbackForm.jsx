@@ -1,14 +1,16 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import FeedbackContext from "../context/FeedbackContext";
 import PropTypes from "prop-types";
 import Card from "./shared/Card";
 import Button from "./shared/Button";
 import RatingSelect from "./RatingSelect";
 
-function FeedbackForm({ handleAdd }) {
+function FeedbackForm() {
 	const [text, setText] = useState("");
 	const [rating, setRating] = useState(10);
 	const [btnIsDisabled, setBtnIsDisabled] = useState(true);
 	const [message, setMessage] = useState("");
+	const { addFeedback } = useContext(FeedbackContext);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -18,7 +20,7 @@ function FeedbackForm({ handleAdd }) {
 				rating,
 			};
 
-			handleAdd(newFeedback);
+			addFeedback(newFeedback);
 
 			setText("");
 		}
