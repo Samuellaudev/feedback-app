@@ -10,7 +10,8 @@ function FeedbackForm() {
 	const [rating, setRating] = useState(10);
 	const [btnIsDisabled, setBtnIsDisabled] = useState(true);
 	const [message, setMessage] = useState("");
-	const { addFeedback, feedbackEdit } = useContext(FeedbackContext);
+	const { addFeedback, updateFeedback, feedbackEdit } =
+		useContext(FeedbackContext);
 
 	useEffect(() => {
 		if (feedbackEdit.edit) {
@@ -28,7 +29,11 @@ function FeedbackForm() {
 				rating,
 			};
 
-			addFeedback(newFeedback);
+			if (feedbackEdit.edit) {
+				updateFeedback(feedbackEdit.item.id, newFeedback);
+			} else {
+				addFeedback(newFeedback);
+			}
 
 			setText("");
 		}
