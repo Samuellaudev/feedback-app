@@ -20,9 +20,7 @@ export const FeedbackProvider = ({ children }) => {
 
 	// Delete feedback
 	const deleteFeedback = (id) => {
-		if (window.confirm(`Are you sure you want to delete id:${id}?`)) {
-			setFeedbacks(feedbacks.filter((item) => item.id !== id));
-		}
+		setFeedbacks(feedbacks.filter((item) => item.id !== id));
 	};
 
 	// Set item to be updated
