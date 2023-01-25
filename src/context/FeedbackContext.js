@@ -1,6 +1,8 @@
 import { createContext, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import FeedbackData from "../data/FeedbackData";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const FeedbackContext = createContext();
 
@@ -21,6 +23,7 @@ export const FeedbackProvider = ({ children }) => {
 	// Delete feedback
 	const deleteFeedback = (id) => {
 		setFeedbacks(feedbacks.filter((item) => item.id !== id));
+        toast.success("Deleted successfully");
 	};
 
 	// Set item to be updated

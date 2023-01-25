@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import Card from "./shared/Card";
 import Button from "./shared/Button";
 import RatingSelect from "./RatingSelect";
+import { toast } from "react-toastify";
 
 function FeedbackForm() {
 	const [text, setText] = useState("");
@@ -31,6 +32,7 @@ function FeedbackForm() {
 
 			if (feedbackEdit.edit) {
 				updateFeedback(feedbackEdit.item.id, newFeedback);
+                toast.success("Edited successfully");
 			} else {
 				addFeedback(newFeedback);
 			}
