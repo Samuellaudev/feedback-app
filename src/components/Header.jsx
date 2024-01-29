@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 
 function Header({ text, bgColor, textColor, cursorSymbol }) {
-	// destructuring
 	const headerStyles = {
 		backgroundColor: bgColor,
 		color: textColor,
@@ -28,8 +27,8 @@ function Header({ text, bgColor, textColor, cursorSymbol }) {
 
 Header.defaultProps = {
 	text: "Feedback UI",
-	bgColor: "rgba(0,0,0,0.4)",
-	textColor: "#ff6a95",
+	bgColor: "#3a7e5d",
+	textColor: "#fff",
 	cursorSymbol: "pointer",
 };
 

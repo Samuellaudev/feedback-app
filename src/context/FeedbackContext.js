@@ -1,32 +1,29 @@
 import { createContext, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
-import FeedbackData from "../data/FeedbackData";
+import { v4 as uuid } from "uuid";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const FeedbackContext = createContext();
+import FeedbackData from "../data/FeedbackData";
+
+export const FeedbackContext = createContext();
 
 export const FeedbackProvider = ({ children }) => {
 	const [feedbacks, setFeedbacks] = useState(FeedbackData);
-
 	const [feedbackEdit, setFeedbackEdit] = useState({
-		item: {}, // when the icon is clicked, the content about that item will be put in here
-		edit: false, // when the icon is clicked, it will change to 'true', which means we are in edit mode
+		item: {},
+		edit: false,
 	});
 
-	// Add feedback
 	const addFeedback = (newFeedback) => {
-		newFeedback.id = uuidv4();
+		newFeedback.id = uuid();
 		setFeedbacks([newFeedback, ...feedbacks]);
 	};
 
-	// Delete feedback
 	const deleteFeedback = (id) => {
 		setFeedbacks(feedbacks.filter((item) => item.id !== id));
         toast.success("Deleted successfully");
 	};
 
-	// Set item to be updated
 	const editFeedback = (item) => {
 		setFeedbackEdit({
 			item,
@@ -34,7 +31,6 @@ export const FeedbackProvider = ({ children }) => {
 		});
 	};
 
-	// Update feedback item
 	const updateFeedback = (id, updItem) => {
 		setFeedbacks(
 			feedbacks.map((item) =>

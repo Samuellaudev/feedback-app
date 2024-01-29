@@ -2,22 +2,22 @@ const FeedbackData = [
 	{
 		id: 1,
 		rating: 10,
-		text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. consequuntur vel vitae commodi alias voluptatem est voluptatum ipsa quae.",
+		text: "This is feedback number 1",
 	},
 	{
 		id: 2,
 		rating: 9,
-		text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. consequuntur vel vitae commodi alias voluptatem est voluptatum ipsa quae.",
+		text: "This is feedback number 2.",
 	},
 	{
 		id: 3,
 		rating: 8,
-		text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. consequuntur vel vitae commodi alias voluptatem est voluptatum ipsa quae.",
+		text: "This is feedback number 3.",
 	},
 	{
 		id: 4,
 		rating: 7,
-		text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. consequuntur vel vitae commodi alias voluptatem est voluptatum ipsa quae.",
+		text: "This is feedback number 4.",
 	},
 ];
 

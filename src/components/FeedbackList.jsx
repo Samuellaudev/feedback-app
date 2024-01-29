@@ -10,7 +10,6 @@ function FeedbackList() {
 		return <p>No Feedback Yet</p>;
 	}
 
-	//   With Framer-motion
 	return (
 		<div className="feedback-list">
 			<AnimatePresence>
