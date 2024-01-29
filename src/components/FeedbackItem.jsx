@@ -1,10 +1,11 @@
 import { useContext, useState } from "react";
-import FeedbackContext from "../context/FeedbackContext";
-import { FaTimes, FaEdit } from "react-icons/fa";
 import PropTypes from "prop-types";
+import { FaTimes, FaEdit } from "react-icons/fa";
+import Modal from "react-modal";
+
+import FeedbackContext from "../context/FeedbackContext";
 import Card from "./shared/Card";
 import Button from "./shared/Button";
-import Modal from "react-modal";
 
 const customStyles = {
 	content: {
@@ -24,9 +25,11 @@ function FeedbackItem({ item }) {
 
 	const [modalIsOpen, setModalIsOpen] = useState(false);
 
-	// Open/close modal
 	const openModal = () => setModalIsOpen(true);
 	const closeModal = () => setModalIsOpen(false);
+
+  const handleEditFeedback = () => editFeedback(item)
+  const handleDeleteFeedback = () => deleteFeedback(item.id)
 
 	return (
 		<>
@@ -34,10 +37,10 @@ function FeedbackItem({ item }) {
 				<div className="num-display">{item.rating}</div>
 				<div className="text-display">{item.text}</div>
 				<button onClick={openModal} className="close">
-					<FaTimes color="purple" />
+					<FaTimes color="gray" />
 				</button>
-				<button onClick={() => editFeedback(item)} className="edit">
-					<FaEdit color="purple" />
+				<button onClick={handleEditFeedback} className="edit">
+					<FaEdit color="gray" />
 				</button>
 			</Card>
 			<Modal
@@ -53,7 +56,7 @@ function FeedbackItem({ item }) {
 				<div className="button-group">
 					<Button
 						version="primary"
-						onClick={() => deleteFeedback(item.id)}
+						onClick={handleDeleteFeedback}
 					>
 						Yes
 					</Button>
@@ -65,9 +68,8 @@ function FeedbackItem({ item }) {
 		</>
 	);
 }
-
-export default FeedbackItem;
-
 FeedbackItem.propTypes = {
 	item: PropTypes.object.isRequired,
 };
+
+export default FeedbackItem;

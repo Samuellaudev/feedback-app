@@ -32,7 +32,7 @@ function FeedbackForm() {
 
 			if (feedbackEdit.edit) {
 				updateFeedback(feedbackEdit.item.id, newFeedback);
-                toast.success("Edited successfully");
+        toast.success("Edited successfully");
 			} else {
 				addFeedback(newFeedback);
 			}
@@ -41,27 +41,29 @@ function FeedbackForm() {
 		}
 	};
 
-	const handleChange = (e) => {
-		if (text === "") {
-			setBtnIsDisabled(true);
-			setMessage(null);
-		} else if (text !== "" && text.trim().length < 9) {
-			setBtnIsDisabled(true);
-			setMessage("Text must be greater than 10 characters");
-		} else {
-			setBtnIsDisabled(false);
-			setMessage(null);
-		}
+  const handleTextChange = (e) => {
+    const inputText = e.target.value;
+    if (!inputText) {
+      setBtnIsDisabled(true);
+      setMessage(null);
+    } else if (inputText.trim().length < 10) {
+      setBtnIsDisabled(true);
+      setMessage("Text must be greater than 10 characters");
+    } else {
+      setBtnIsDisabled(false);
+      setMessage(null);
+    }
 
-		setText(e.target.value);
-	};
+    setText(inputText);
+  };
+
 	return (
 		<Card>
 			<form onSubmit={handleSubmit}>
 				<h2>How would you rate your service with us?</h2>
 				<RatingSelect selectRating={(rating) => setRating(rating)} />
 				<div className="input-group">
-					<input onChange={handleChange} type="text" value={text} />
+					<input onChange={handleTextChange} type="text" value={text} />
 					<Button type="submit" isDisabled={btnIsDisabled}>
 						Send
 					</Button>

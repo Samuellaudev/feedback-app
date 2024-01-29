@@ -1,23 +1,24 @@
-import React from "react";
-import { useContext } from "react";
+import React, { useContext } from "react";
 import FeedbackContext from "../context/FeedbackContext";
 
 function FeedbackStats() {
-	const { feedbacks } = useContext(FeedbackContext);
+  const { feedbacks } = useContext(FeedbackContext);
 
-	let average =
-		feedbacks.reduce((acc, curr) => {
-			return acc + curr.rating;
-		}, 0) / feedbacks.length;
+  const totalFeedbacks = feedbacks.length;
 
-	average = average.toFixed(1).replace(/[.,]0$/, "");
+  const averageRating = totalFeedbacks
+    ? (
+        feedbacks.reduce((total, feedback) => total + feedback.rating, 0) /
+        totalFeedbacks
+      ).toFixed(1).replace(/[.,]0$/, "")
+    : 0;
 
-	return (
-		<div className="feedback-stats">
-			<h4>{feedbacks.length} Reviews</h4>
-			<h4>Average Rating: {isNaN(average) ? 0 : average}</h4>
-		</div>
-	);
+  return (
+    <div className="feedback-stats">
+      <h4>{totalFeedbacks} {totalFeedbacks === 1 ? 'Review' : 'Reviews'}</h4>
+      <h4>Average Rating: {averageRating}</h4>
+    </div>
+  );
 }
 
 export default FeedbackStats;

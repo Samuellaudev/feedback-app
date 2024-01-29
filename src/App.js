@@ -1,4 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import Header from "./components/Header";
 import FeedbackList from "./components/FeedbackList";
 import FeedbackStats from "./components/FeedbackStats";
@@ -6,8 +9,6 @@ import FeedbackForm from "./components/FeedbackForm";
 import AboutIconLink from "./components/AboutIconLink";
 import AboutPage from "../src/pages/AboutPage";
 import { FeedbackProvider } from "../src/context/FeedbackContext";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 function App() {
 	return (
@@ -32,7 +33,7 @@ function App() {
 					</Routes>
 				</div>
 			</Router>
-            <ToastContainer />
+      <ToastContainer />
 		</FeedbackProvider>
 	);
 }
