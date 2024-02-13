@@ -1,6 +1,8 @@
-import PropTypes from "prop-types";
-
-function Card({ children, reverse }) {
+interface CardProps {
+  children: React.ReactElement;
+  reverse?: boolean;
+}
+function Card({ children, reverse = false }: CardProps) {
   return (
     <div
       className="card"
@@ -13,14 +15,5 @@ function Card({ children, reverse }) {
     </div>
   );
 }
-
-Card.defaultProps = {
-  reverse: false,
-};
-
-Card.propTypes = {
-  children: PropTypes.node.isRequired,
-  reverse: PropTypes.bool,
-};
 
 export default Card;

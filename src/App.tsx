@@ -7,8 +7,8 @@ import FeedbackList from "./components/FeedbackList";
 import FeedbackStats from "./components/FeedbackStats";
 import FeedbackForm from "./components/FeedbackForm";
 import AboutIconLink from "./components/AboutIconLink";
-import AboutPage from "../src/pages/AboutPage";
-import { FeedbackProvider } from "../src/context/FeedbackContext";
+import AboutPage from "./pages/AboutPage";
+import { FeedbackProvider } from "./context/FeedbackContext";
 
 function App() {
 	return (
@@ -18,7 +18,6 @@ function App() {
 				<div className="container">
 					<Routes>
 						<Route
-							exact
 							path="/"
 							element={
 								<>
@@ -32,8 +31,8 @@ function App() {
 						<Route path="/about" element={<AboutPage />} />
 					</Routes>
 				</div>
+        <ToastContainer />
 			</Router>
-      <ToastContainer />
 		</FeedbackProvider>
 	);
 }
