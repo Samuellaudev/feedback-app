@@ -1,16 +1,19 @@
-import React, { useState, useContext, useEffect } from "react";
-import PropTypes from "prop-types";
+import { useState, useContext, useEffect } from "react";
 import FeedbackContext from "../context/FeedbackContext";
 
-function RatingSelect({ selectRating }) {
-	const [selected, setSelected] = useState(10);
+interface SelectRatingProp {
+  selectRating: (rating: number) => void
+}
+
+const RatingSelect = ({ selectRating }: SelectRatingProp) => {
+	const [selected, setSelected] = useState<number>(10);
 	const { feedbackEdit } = useContext(FeedbackContext);
 
 	useEffect(() => {
 		setSelected(feedbackEdit.item.rating);
 	}, [feedbackEdit]);
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedRating = Number(e.target.value);
     setSelected(selectedRating);
     selectRating(selectedRating);
@@ -34,9 +37,5 @@ function RatingSelect({ selectRating }) {
     </ul>
   );
 }
-
-RatingSelect.propTypes = {
-  selectRating: PropTypes.func.isRequired,
-};
 
 export default RatingSelect;

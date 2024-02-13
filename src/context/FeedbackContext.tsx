@@ -1,6 +1,5 @@
 import React, { createContext, useState } from "react";
 import { FeedbackContextType, FeedbackProviderProps, Feedback, FeedbackEdit } from './FeedbackContext.types';
-import { v4 as uuid } from "uuid";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -34,7 +33,6 @@ export const FeedbackProvider = ({ children }: FeedbackProviderProps) => {
 	});
 
 	const addFeedback = (newFeedback: Feedback) => {
-		newFeedback.id = uuid();
 		setFeedbacks([newFeedback, ...feedbacks]);
 	};
 

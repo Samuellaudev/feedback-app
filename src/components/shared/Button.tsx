@@ -1,9 +1,9 @@
 interface ButtonProps {
-  children: React.ReactElement;
-  version: string;
+  children: React.ReactElement | string;
+  version: 'primary' | 'secondary';
   type?: "button" | "submit" | "reset";
-  isDisabled: boolean;
-  onClick: () => void;
+  isDisabled?: boolean;
+  onClick?: () => void;
 }
 
 const Button = ({
